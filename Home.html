@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body bgcolor="#D3B484">
+
+	<ul>
+		<li><a href="Home.html">Home Page</a></li>
+		<li><a href="Q2.html">Promotional Plan</a></li>
+		<li><a href="Comprehensive.html">Comprehensive Paper</a></li>
+	  </ul>
+
+
+<span>&nbsp;</span>
+
+<div style="margin-left:15%">
+
+<div class="title1">
+	Homepage
+
+<img src="Banner.png" alt="Banner"style="width:95%;height:600px;padding-top:0.5%;padding-bottom:0.5%;">
+
+<div class="title1">
+	About Us 
+
+<div class="about">
+	JAB Multimedia is at the crossroads of education, creativity, and an honest appreciation for caffeine. We started with a simple but deep passion for the joy and imagination that a great cup of coffee or energy drink can spark. We are a team that's focused on identifying and disseminating the wide variety of caffeinated drinks that fuel our lives. </div>
+
+<div class="about">Our goal is to delve further into the world of caffeine-infused interests, understanding the histories, science, and perceptions that lie behind each drink. JAB Multimedia will lead you through the interesting journey of caffeine consumption, from the aromatic depths of freshly ground coffee beans to the subtle nuances of rare tea leaves. By showcasing the variety and complexity of caffeinated beverages, our engaging material seeks to inform, entertain, and engage our audience.</div>
+
+<div class="about">JAB Multimedia shares something for everyone, regardless of your level of interest in coffee, tea, or caffeinated beverages. Our group, which consists of students, adds a unique perspective to any piece of content we create. We combine thorough research with creative narrative to provide informative and entertaining insights. Welcome to JAB Multimedia, where we bring our passion for caffeine and multimedia storytelling to life.</div>
+
+<div class="title1">
+	Team
+	</div>
+
+<div class="textmain">
+
+	<div class="left">
+		<img src="Aiden.png" alt="aiden"style="width:90%;height:40%;border-radius:110%;">
+		Cinco, Aiden 
+		<br>&nbsp;<br>
+        Encoder,poc 
+		<br>&nbsp;<br>
+		ap.aiden.cinco<br>@apecschools.edu.ph
+	</div>
+
+	<div class="middle">
+		<img src="Joseph.jpg" alt="Joseph"style="width:90%;height:40%;border-radius:110%;">
+		Cuarteron, Joseph
+		<br>&nbsp;<br>
+        Encoder,researcher 
+		<br>&nbsp;<br>
+		ap.josephkirk.cuarteron<br>@apecschools.edu.ph
+	</div>
+	
+	<div class="right">
+		<img src="Brandon.jpg" alt="Joseph"style="width:90%;height:40%;border-radius:110%;">
+		Espineli, Brandon
+		<br>&nbsp;<br>
+        Researcher
+		<br>&nbsp;<br>
+		ap.brandonrussel.espineli<br>@apecschools.edu.ph
+	</div>
+
+	<div class="left">
+		<img src="Bianca.png" alt="Joseph"style="width:90%;height:40%;border-radius:110%;">
+		Filart, Bianca
+		<br>&nbsp;<br>
+        Researcher, Scribe 
+		<br>&nbsp;<br>
+		ap.biancaelise.filart<br>@apecschools.edu.ph
+	</div>
+
+	<div class="right">
+		<img src="Amber.jpg" alt="Joseph"style="width:90%;height:40%;border-radius:110%;">
+		Gaspar, Amber
+		<br>&nbsp;<br>
+		Spokesperson
+		<br>&nbsp;<br>
+		ap.ambergabrielle.gaspar<br>@apecschools.edu.ph
+	</div>
+
+</div>
+
+<script>
+// variables
+var navigationBars = document.querySelectorAll(".navigationbars");
+
+// resize functions
+function resizeNavigationBars() {
+	for (let i = 0; i < navigationBars.length; i++) {
+		if (window.innerHeight >= window.innerWidth) {
+			navigationBars[i].style.width = window.innerWidth / 4 + "px";
+			let navigationBarSize = navigationBars[i].getBoundingClientRect();
+			navigationBars[i].style.height = navigationBarSize.width * 0.25 + "px";
+			navigationBarSize = navigationBars[i].getBoundingClientRect();
+			navigationBars[i].style.fontSize = navigationBarSize.height * 0.6 + "px";
+		} else {
+			navigationBars[i].style.width = window.innerWidth / 4 + "px";
+			let navigationBarSize = navigationBars[i].getBoundingClientRect();
+			navigationBars[i].style.height = navigationBarSize.width * 0.15 + "px";
+			navigationBarSize = navigationBars[i].getBoundingClientRect();
+			navigationBars[i].style.fontSize = navigationBarSize.height * 0.6 + "px";
+		}
+	}
+}
+
+// event listeners
+
+window.addEventListener("load", resizeNavigationBars);
+window.addEventListener("resize", resizeNavigationBars);
+
+</script>
+</body>
+</html>
