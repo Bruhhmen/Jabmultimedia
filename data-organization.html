@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p></p>
+
+<script>
+
+// Variables
+var p = document.querySelector("p");
+var m = "Male";
+var f = "Female";
+var s1 = "10-1";
+var s2 = "10-2";
+var answers = [
+	"No", "Yes", "Yes", "No",
+	"No", "No", "No", "Yes", "No",
+	"Yes", "No", "No", "No", "Yes",
+	"Yes", "Yes", "Yes", "Yes", "No",
+	"Yes", "Yes", "No", "Yes", "Yes",
+	"Yes", "Yes", "Yes", "Yes", "No",
+	"Yes", "Yes", "Yes", "Yes", "Yes",
+	"Yes", "Yes", "No", "No", "Yes",
+	"Yes", "No", "Yes", "Yes", "No",
+	"Yes", "No", "No", "Yes", "Yes",
+	"Yes", "Yes", "Yes", "No"
+];
+var sections = [
+	s1, s2, s1, s1,
+	s1, s1, s1, s1, s1,
+	s1, s1, s1, s1, s2,
+	s2, s2, s2, s1, s1,
+	s1, s1, s1, s1, s1,
+	s1, s1, s1, s2, s2,
+	s2, s2, s2, s1, s1,
+	s2, s2, s1, s1, s2,
+	s2, s2, s2, s2, s2,
+	s2, s2, s2, s2, s2,
+	s2, s2, s2, s2
+];
+var sectionTypes = [s1, s2];
+var sectionYes = [0, 0];
+var sectionNo = [0, 0];
+var genders = [
+	m, m, m, m,
+	f, f, m, f, f,
+	f, m, f, f, f,
+	m, f, m, m, m,
+	m, m, m, m, m,
+	f, f, f, f, m,
+	f, m, m, f, m,
+	f, f, m, m, m,
+	f, m, f, f, f,
+	f, m, f, m, f,
+	m, m, m, f
+];
+var genderTypes = [m, f];
+var genderYes = [0, 0];
+var genderNo = [0, 0];
+var ages = [
+	16, 15, 16, 15, 
+	16, 15, 15, 17, 16, 
+	16, 16, 16, 15, 16,
+	16, 16, 17, 15, 16,
+	15, 15, 16, 15, 15,
+	15, 16, 16, 16, 16,
+	15, 15, 16, 15, 17,
+	16, 15, 16, 16, 16,
+	17, 15, 15, 17, 15,
+	16, 16, 15, 16, 17,
+	19, 18, 16, 15
+];
+var ageCount = [];
+var ageCountYes = [];
+var ageCountNo = [];
+
+// Age Data
+for (let i = 0; i < ages.length; i++) {
+	/* Check how many ages are there */
+	if (ageCount.indexOf(ages[i]) == -1) {
+		ageCount.push(ages[i]);
+	}
+}
+
+for (let i = 0; i < ageCount.length; i++) {
+	ageCountYes.push(0);
+	ageCountNo.push(0);
+}
+
+function organizeAgeCount(index) {
+	let prevNum = 0;
+	let nextNum = 0;
+	for (let i = 0; i < ageCount.length; i++) {
+		prevNum = ageCount[index];
+		nextNum = ageCount[i];
+		if (ageCount[index] > ageCount[i] && index < i) {
+			ageCount[index] = nextNum;
+			ageCount[i] = prevNum;
+			index = i;
+		}
+	}
+}
+
+for (let i = 0; i < ageCount.length; i++) {
+	organizeAgeCount(i);
+}
+
+function checkAgeAnswers() {
+	for (let i = 0; i < ages.length; i++) {
+		let index = ageCount.indexOf(ages[i]);
+		if (answers[i] == "Yes") {
+			ageCountYes[index]++;
+		} else {
+			ageCountNo[index]++;
+		}
+	}
+}
+checkAgeAnswers();
+
+// Gender Data
+function checkGenderAnswers() {
+	for (let i = 0; i < genders.length; i++) {
+		let index = genderTypes.indexOf(genders[i]);
+		if (answers[i] == "Yes") {
+			genderYes[index]++;
+		} else {
+			genderNo[index]++;
+		}
+	}
+}
+checkGenderAnswers();
+
+// Section Data
+function checkSectionAnswers() {
+	for (let i = 0; i < sections.length; i++) {
+		let index = sectionTypes.indexOf(sections[i]);
+		if (answers[i] == "Yes") {
+			sectionYes[index]++;
+		} else {
+			sectionNo[index]++;
+		}
+	}
+}
+checkSectionAnswers();
+
+// Display Text
+function displayText() {
+	// Ages
+	for (let i = 0; i < ageCount.length; i++) {
+		/* total respondants in a specific age demographic */
+		let totalRespondents = ageCountYes[i] + ageCountNo[i];
+		p.innerHTML += '<b>' + "AGE (" + ageCount[i] + "):" + '</b>' + '<br><br>';
+		p.innerHTML += "Yes: " + ageCountYes[i] + " (" + ((ageCountYes[i] / totalRespondents) * 100) + "%)" + '<br>';
+		p.innerHTML += "No: " + ageCountNo[i] + " (" + ((ageCountNo[i] / totalRespondents) * 100) + "%)" + '<br><br>';
+	}
+	// Genders
+	for (let i = 0; i < genderTypes.length; i++) {
+		/* total respondants in a specific gender demographic */
+		let totalRespondents = genderYes[i] + genderNo[i];
+		p.innerHTML += '<b>' + "GENDER (" + genderTypes[i] + "):" + '</b>' + '<br><br>';
+		p.innerHTML += "Yes: " + genderYes[i] + " (" + ((genderYes[i] / totalRespondents) * 100) + "%)" + '<br>';
+		p.innerHTML += "No: " + genderNo[i] + " (" + ((genderNo[i] / totalRespondents) * 100) + "%)" + '<br><br>';
+	}
+	// Sections
+	for (let i = 0; i < sectionTypes.length; i++) {
+		/* total respondants in a specific section demographic */
+		let totalRespondents = sectionYes[i] + sectionNo[i];
+		p.innerHTML += '<b>' + "SECTION (" + sectionTypes[i] + "):" + '</b>' + '<br><br>';
+		p.innerHTML += "Yes: " + sectionYes[i] + " (" + ((sectionYes[i] / totalRespondents) * 100) + "%)" + '<br>';
+		p.innerHTML += "No: " + sectionNo[i] + " (" + ((sectionNo[i] / totalRespondents) * 100) + "%)" + '<br><br>';
+	}
+}
+displayText();
+
+</script>
+</body>
+</html>
